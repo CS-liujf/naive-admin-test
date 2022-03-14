@@ -8,6 +8,7 @@ declare module 'vue' {
     NButton: typeof import('naive-ui')['NButton']
     NSpace: typeof import('naive-ui')['NSpace']
     NTag: typeof import('naive-ui')['NTag']
+    SvgIcon: typeof import('./src/components/SvgIcon/index.vue')['default']
   }
 }
 

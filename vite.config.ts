@@ -4,6 +4,8 @@ import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import { resolve } from 'path'
+// svg 组件
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 
 function pathResolve(dir: string): string {
@@ -15,12 +17,17 @@ export default defineConfig({
     vue(),
     Components({
       resolvers: [NaiveUiResolver()]
+    }),
+    createSvgIconsPlugin({
+      iconDirs: [pathResolve('src/icons')],
+      symbolId: 'icon-[dir]-[name]'
     })
   ],
   resolve: {
     // 设置别名
     alias: [
-      { find: '@', replacement: pathResolve('src') }
+      { find: '@', replacement: pathResolve('src') },
+      { find: 'store', replacement: pathResolve('src') }
     ]
   },
   server: {
