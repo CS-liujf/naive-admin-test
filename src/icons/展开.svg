@@ -1,0 +1,20 @@
+<svg width="1024" height="1024" xmlns="http://www.w3.org/2000/svg" class="icon">
+ <defs>
+  <style type="text/css">@font-face { font-family: feedback-iconfont; src:
+            url("//at.alicdn.com/t/font_1031158_u69w8yhxdu.woff2?t=1630033759944") format("woff2"),
+            url("//at.alicdn.com/t/font_1031158_u69w8yhxdu.woff?t=1630033759944") format("woff"),
+            url("//at.alicdn.com/t/font_1031158_u69w8yhxdu.ttf?t=1630033759944") format("truetype"); }</style>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <path id="svg_1" d="m131.11,192.37m32.17,0l700.08,0q32.17,0 32.17,32.17l0,0q0,32.17 -32.17,32.17l-700.08,0q-32.17,0 -32.17,-32.17l0,0q0,-32.17 32.17,-32.17z"/>
+  <path id="svg_2" d="m131.11,766.83m32.17,0l700.08,0q32.17,0 32.17,32.17l0,0q0,32.17 -32.17,32.17l-700.08,0q-32.17,0 -32.17,-32.17l0,0q0,-32.17 32.17,-32.17z"/>
+  <path id="svg_3" d="m130.999994,385.09m32.17,0l381.87,0q32.17,0 32.17,32.17l0,0q0,32.17 -32.17,32.17l-381.87,0q-32.17,0 -32.17,-32.17l0,0q0,-32.17 32.17,-32.17z"/>
+  <path id="svg_4" d="m131.000013,578.11m32.17,0l381.87,0q32.17,0 32.17,32.17l0,0q0,32.17 -32.17,32.17l-381.87,0q-32.17,0 -32.17,-32.17l0,0q0,-32.17 32.17,-32.17z"/>
+  <path transform="rotate(-180 796.4371948242188,510.7711486816406) " id="svg_5" d="m700.825134,510.771107l191.23,127.54l0,-255.08l-191.23,127.54z"/>
+ </g>
+</svg>
