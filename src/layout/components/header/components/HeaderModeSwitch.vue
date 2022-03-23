@@ -10,7 +10,8 @@ import ModeSwitch from '@/components/ModeSwitch/ModeSwitch.vue'
 </script>
 
 <style scoped>
-.switch-container{
-  padding: 0 3px;
+.switch-container {
+  /*width: 40px;*/
+  padding: 0 4px;
 }
 </style>

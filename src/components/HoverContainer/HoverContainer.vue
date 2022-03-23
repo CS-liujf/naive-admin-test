@@ -1,5 +1,5 @@
 <template>
-<div id="container" :class=className>
+<div :class=className>
   <slot></slot>
 </div>
 </template>
@@ -8,12 +8,12 @@
 import {computed} from 'vue'
 import {isDark} from "@/util/switchMode"
 const className=computed(()=>{
-  return !isDark.value? 'light-container' : 'dark-container'
+  return !isDark.value? 'hover-container light-container' : 'hover-container dark-container'
 })
 </script>
 
 <style scoped>
-#container {
+.hover-container {
   display: flex;
   justify-content: center;
   align-items: center;

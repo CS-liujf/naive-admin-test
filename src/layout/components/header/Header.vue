@@ -1,25 +1,61 @@
 <template>
-<n-layout-header>
-  <div class="container">
-    <HeaderModeSwitch/>
-  </div>
-</n-layout-header>
+  <n-layout-header class="header-container">
+<!--    <div :class=className>-->
+<!--      <div>-->
+        <HeaderCollapse/>
+<!--      </div>-->
+      <div class="container">
+        <HeaderModeSwitch/>
+        <HeaderAvatar/>
+      </div>
+<!--    </div>-->
+  </n-layout-header>
 </template>
 
 <script lang="ts" setup>
 import HeaderModeSwitch from './components/HeaderModeSwitch.vue'
+import HeaderAvatar from './components/HeaderAvatar.vue'
+import HeaderCollapse from "@/layout/components/header/components/HeaderCollapse.vue"
+// import {computed} from "vue"
+// import {isDark} from "@/util/switchMode"
+
+// const className = computed(()=>{
+//   return isDark.value ? 'header-container-dark': 'header-container-light'
+// })
 </script>
 
 <style scoped>
-n-layout-header{
+.header-container {
   display: flex;
   align-items: center;
-  padding: 9px;
+  justify-content: space-between;
+  /*background-color: #956878;*/
+  /*background-color: #18181c;*/
+  /*这里用sticky，因此layout中的layout得加上absolute*/
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 56px;
+  width: 100%;
+  box-shadow: 0 1px 2px rgb(0 21 41 / 8%);
 }
+.header-container-light {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  opacity: 1;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 54px;
+  width: 100%;
+  box-shadow: 0 1px 2px rgb(0 21 41 / 8%);
+}
+
 .container {
   display: flex;
   justify-content: flex-end;
-  height: 40px;
+  height: 100%;
 }
 
 </style>
