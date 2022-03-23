@@ -1,10 +1,10 @@
 <template>
   <n-tooltip placement="bottom" trigger="hover">
     <template #trigger>
-      <n-icon size="27" style="cursor:pointer;">
-        <SvgIcon v-if="isDark" name="太阳" @click="switchMode()"></SvgIcon>
-        <SvgIcon v-else name="月亮" @click="switchMode()"></SvgIcon>
-      </n-icon>
+      <div @click="switchMode()" class="svg-container">
+        <SvgIcon v-if="isDark" name="太阳" size="26"></SvgIcon>
+        <SvgIcon v-else name="月亮" size="28"></SvgIcon>
+      </div>
     </template>
     <span>{{ message }}</span>
   </n-tooltip>
@@ -20,5 +20,10 @@ const message = computed(() => {
 </script>
 
 <style scoped>
-
+.svg-container{
+  cursor:pointer;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
 </style>
