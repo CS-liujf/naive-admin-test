@@ -2,7 +2,7 @@
   <n-layout-header class="header-container">
     <div class="header-left">
       <!--      <div>-->
-      <HeaderCollapse/>
+      <HeaderCollapse style="margin-right: 8px"/>
       <HeaderBreadCrumb/>
     </div>
     <div class="container-right">
