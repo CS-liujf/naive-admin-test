@@ -1,14 +1,15 @@
 <template>
   <n-layout-header class="header-container">
-<!--    <div :class=className>-->
-<!--      <div>-->
-        <HeaderCollapse/>
-<!--      </div>-->
-      <div class="container">
-        <HeaderModeSwitch/>
-        <HeaderAvatar/>
-      </div>
-<!--    </div>-->
+    <div class="header-left">
+      <!--      <div>-->
+      <HeaderCollapse/>
+      <HeaderBreadCrumb/>
+    </div>
+    <div class="container-right">
+      <HeaderModeSwitch/>
+      <HeaderAvatar/>
+    </div>
+    <!--    </div>-->
   </n-layout-header>
 </template>
 
@@ -16,6 +17,7 @@
 import HeaderModeSwitch from './components/HeaderModeSwitch.vue'
 import HeaderAvatar from './components/HeaderAvatar.vue'
 import HeaderCollapse from "@/layout/components/header/components/HeaderCollapse.vue"
+import HeaderBreadCrumb from "@/layout/components/header/components/HeaderBreadCrumb.vue";
 // import {computed} from "vue"
 // import {isDark} from "@/util/switchMode"
 
@@ -39,6 +41,7 @@ import HeaderCollapse from "@/layout/components/header/components/HeaderCollapse
   width: 100%;
   box-shadow: 0 1px 2px rgb(0 21 41 / 8%);
 }
+
 .header-container-light {
   display: flex;
   align-items: center;
@@ -52,10 +55,17 @@ import HeaderCollapse from "@/layout/components/header/components/HeaderCollapse
   box-shadow: 0 1px 2px rgb(0 21 41 / 8%);
 }
 
-.container {
+.container-right {
   display: flex;
   justify-content: flex-end;
   height: 100%;
+}
+
+.header-left {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 </style>
