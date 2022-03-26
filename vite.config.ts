@@ -8,7 +8,8 @@ import {resolve} from 'path'
 import {createSvgIconsPlugin} from 'vite-plugin-svg-icons'
 // 下面这个插件可以给index.html注入内容
 import {createHtmlPlugin} from "vite-plugin-html";
-
+//下面这个插件用于可视化打包后各个资源占用大小
+import { visualizer } from "rollup-plugin-visualizer";
 
 function pathResolve(dir: string): string {
   return resolve(__dirname, dir)
@@ -32,6 +33,11 @@ export default defineConfig({
           title: 'index'
         }
       }
+    }),
+    visualizer({
+      // npm run dev后会自动生成该html于项目根目录
+      filename: '打包分析.html',
+      title: '可视化打包分析'
     })
   ],
   resolve: {
