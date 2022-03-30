@@ -2,22 +2,22 @@
   <n-layout-header class="header-container">
     <div class="header-left">
       <!--      <div>-->
-      <HeaderCollapse style="margin-right: 8px"/>
-      <HeaderBreadCrumb/>
+      <HeaderCollapse style="margin-right: 8px" />
+      <HeaderBreadCrumb />
     </div>
     <div class="container-right">
-      <HeaderModeSwitch/>
-      <HeaderAvatar/>
+      <HeaderModeSwitch />
+      <HeaderAvatar />
     </div>
     <!--    </div>-->
   </n-layout-header>
 </template>
 
 <script lang="ts" setup>
-import HeaderModeSwitch from './components/HeaderModeSwitch.vue'
-import HeaderAvatar from './components/HeaderAvatar.vue'
-import HeaderCollapse from "@/layout/components/header/components/HeaderCollapse.vue"
-import HeaderBreadCrumb from "@/layout/components/header/components/HeaderBreadCrumb.vue";
+import HeaderCollapse from '@/layout/components/header/components/HeaderCollapse.vue';
+import HeaderBreadCrumb from '@/layout/components/header/components/HeaderBreadCrumb.vue';
+import HeaderModeSwitch from './components/HeaderModeSwitch.vue';
+import HeaderAvatar from './components/HeaderAvatar.vue';
 // import {computed} from "vue"
 // import {isDark} from "@/util/switchMode"
 
