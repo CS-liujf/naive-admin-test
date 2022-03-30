@@ -1,26 +1,39 @@
+// 该文件是由执行npx eslint --init
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
   },
   extends: [
     'plugin:vue/vue3-recommended',
-    'standard-with-typescript'
+    'airbnb-base',
   ],
   parserOptions: {
     ecmaVersion: 'latest',
     parser: '@typescript-eslint/parser',
-    sourceType: 'module'
+    sourceType: 'module',
   },
   plugins: [
     'vue',
-    '@typescript-eslint'
+    '@typescript-eslint',
   ],
-  rules: { },
+  rules: {
+    // 如下规则用于重写airbnb中必须加 file extension的规定
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
+  },
   settings: {
     // 安装eslint-import-resolver-typescript后在此配置import/resolver，即可读取项目根目录下tsconfig.json中的路径别名设置
     'import/resolver': {
-      typescript: {}
-    }
-  }
-}
+      typescript: {},
+    },
+  },
+};
