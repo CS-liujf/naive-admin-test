@@ -1,14 +1,19 @@
 <template>
   <n-layout-sider
-    content-style="padding: 24px;"
+    collapse-mode="width"
     :collapsed="isCollapsed"
+    :collapsed-width="54"
+    width="210"
   >
-    海淀桥
+    <!--    <SideBarLogo />-->
+    <SideBarMenu />
   </n-layout-sider>
 </template>
 
 <script lang="ts" setup>
 import isCollapsed from '@/layout/components/helper/';
+import SideBarMenu from './components/SideBarMenu.vue';
+// import SideBarLogo from './components/SideBarLogo.vue';
 </script>
 <style scoped>
 
