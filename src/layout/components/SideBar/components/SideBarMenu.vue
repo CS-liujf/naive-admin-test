@@ -1,12 +1,12 @@
 <template>
-  <n-scrollbar>
-    <n-menu
-      :collapsed="isCollapsed"
-      :collapsed-width="54"
-      :options="menuOptions"
-      :indent="16"
-    />
-  </n-scrollbar>
+  <!--  <n-scrollbar>-->
+  <n-menu
+    :collapsed="isCollapsed"
+    :collapsed-width="54"
+    :options="menuOptions"
+    :indent="16"
+  />
+<!--  </n-scrollbar>-->
 </template>
 <script lang="ts" setup>
 import isCollapsed from '@/layout/components/helper/';
