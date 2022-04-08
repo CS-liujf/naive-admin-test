@@ -29,6 +29,11 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    // 支持import devDependencies
+    'import/no-extraneous-dependencies': [
+      'error',
+      { devDependencies: true },
+    ],
   },
   settings: {
     // 安装eslint-import-resolver-typescript后在此配置import/resolver，即可读取项目根目录下tsconfig.json中的路径别名设置
