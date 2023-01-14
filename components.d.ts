@@ -7,11 +7,9 @@ declare module 'vue' {
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     HoverContainer: typeof import('./src/components/HoverContainer/HoverContainer.vue')['default']
     ModeSwitch: typeof import('./src/components/ModeSwitch/ModeSwitch.vue')['default']
-    NaiveProvider: typeof import('./src/layout/components/NaiveProvider/NaiveProvider.vue')['default']
     NBreadcrumb: typeof import('naive-ui')['NBreadcrumb']
     NBreadcrumbItem: typeof import('naive-ui')['NBreadcrumbItem']
     NButton: typeof import('naive-ui')['NButton']
-    NCard: typeof import('naive-ui')['NCard']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     NDialogProvider: typeof import('naive-ui')['NDialogProvider']
     NDropdown: typeof import('naive-ui')['NDropdown']
@@ -24,9 +22,7 @@ declare module 'vue' {
     NMenu: typeof import('naive-ui')['NMenu']
     NMessageProvider: typeof import('naive-ui')['NMessageProvider']
     NNotificationProvider: typeof import('naive-ui')['NNotificationProvider']
-    NScrollbar: typeof import('naive-ui')['NScrollbar']
     NTooltip: typeof import('naive-ui')['NTooltip']
-    ProviderContent: typeof import('./src/layout/components/NaiveProvider/ProviderContent.vue')['default']
     SvgIcon: typeof import('./src/components/SvgIcon/index.vue')['default']
   }
 }
