@@ -31,5 +31,11 @@ const themeOverrides: GlobalThemeOverrides = {
     itemTextColorHover: '#1a91ff',
     itemTextColorPressed: '#1a91ff',
   },
+  // Layout: {
+  //   siderColor: 'RGB(0, 20, 40)',
+  // },
+  // Menu: {
+  //   itemIconColorHover: '#CFCFCF',
+  // },
 };
 </script>

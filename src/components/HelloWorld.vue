@@ -1,52 +1,59 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-defineProps<{ msg: string }>()
-
-const count = ref(0)
-</script>
-
 <template>
-  <h1>{{ msg }}</h1>
-
-  <p>
-    Recommended IDE setup:
-    <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>
-    +
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
-  </p>
-
-  <p>See <code>README.md</code> for more information.</p>
-
-  <p>
-    <a href="https://vitejs.dev/guide/features.html" target="_blank">
-      Vite Docs
-    </a>
-    |
-    <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs</a>
-  </p>
-
-  <button type="button" @click="count++">count is: {{ count }}</button>
-  <p>
-    Edit
-    <code>components/HelloWorld.vue</code> to test hot module replacement.
-  </p>
+  <n-card title="测试">
+    文字测试
+    <n-button @click="test">
+      naive-ui
+    </n-button>
+    <n-space>
+      <n-tag> 爱在西元前</n-tag>
+      <n-tag type="success">
+        不该
+      </n-tag>
+      <n-tag type="warning">
+        超人不会飞
+      </n-tag>
+      <n-tag type="error">
+        手写的从前
+      </n-tag>
+      <n-tag type="info">
+        哪里都是你
+      </n-tag>
+    </n-space>
+    <SvgIcon name="test" />
+    <n-button @click="createMessage">
+      打开信息
+    </n-button>
+    <n-button
+      strong
+      secondary
+      type="success"
+      @click="switchMode()"
+    >
+      切换主题
+    </n-button>
+    <mode-switch />
+  </n-card>
 </template>
+<script lang="ts" setup>
+import { useMessage } from 'naive-ui';
+import { switchMode } from '@/util/switchMode';
+import ModeSwitch from '@/components/ModeSwitch/ModeSwitch.vue';
+import showMes from './temp';
 
-<style scoped>
-a {
-  color: #42b983;
+const message = useMessage();
+
+function createMessage() {
+  message.info(
+    "I don't know why nobody told you how to unfold your love",
+    {
+      closable: true,
+      duration: 5000,
+    },
+  );
 }
 
-label {
-  margin: 0 0.5em;
-  font-weight: bold;
+function test() {
+  showMes();
 }
 
-code {
-  background-color: #eee;
-  padding: 2px 4px;
-  border-radius: 4px;
-  color: #304455;
-}
-</style>
+</script>

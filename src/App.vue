@@ -8,7 +8,7 @@ import NaiveProvider from './layout/components/NaiveProvider/NaiveProvider.vue';
 
 <template>
   <naive-provider>
-    <layout />
+    <router-view />
   </naive-provider>
 </template>
 

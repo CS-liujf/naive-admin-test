@@ -3,7 +3,7 @@
     collapse-mode="width"
     :collapsed="isCollapsed"
     :collapsed-width="54"
-    width="210"
+    width="200"
   >
     <SideBarLogo />
     <SideBarMenu />
