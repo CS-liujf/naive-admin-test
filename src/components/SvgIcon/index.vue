@@ -1,13 +1,17 @@
 <template>
-  <n-icon :color="color" :depth="depth" :size="size">
+  <n-icon
+    :color="color"
+    :depth="depth"
+    :size="size"
+  >
     <svg aria-hidden="true">
-      <use :href="symbolId"/>
+      <use :href="symbolId" />
     </svg>
   </n-icon>
 </template>
 
-<script>
-import {computed, defineComponent} from 'vue'
+<script >
+import { computed, defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'SvgIcon',
@@ -26,16 +30,16 @@ export default defineComponent({
     },
     size: {
       type: String,
-      default: undefined
+      default: undefined,
     },
     depth: {
       type: 1 | 2 | 3 | 4 | 5,
-      default: undefined
-    }
+      default: undefined,
+    },
   },
   setup(props) {
-    const symbolId = computed(() => `#${props.prefix}-${props.name}`)
-    return { symbolId }
+    const symbolId = computed(() => `#${props.prefix}-${props.name}`);
+    return { symbolId };
   },
-})
+});
 </script>
