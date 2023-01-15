@@ -1,31 +1,14 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
-import layout from '@/layout/layout.vue';
+import { staticRoutes as routes } from './route_module/static'
 import { App } from 'vue';
+import { setBeforeEach } from './route_module/guard';
 
-const routes:Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    component: layout,
-    children: [
-      {
-        path: 'home',
-        component: () => import('@/views/home.vue'),
-        meta: { title: '主页' },
-      },
-      {
-        path: 'a',
-        component: () => import('@/views/a.vue'),
-        meta: { title: 'a 页面' },
-      },
-    ],
-  },
-];
-
-const route = createRouter({
+export const router = createRouter({
   history: createWebHashHistory(),
   routes,
 });
 
-export default function setupRouter(app:App) {
-  app.use(route);
+export default function setupRouter(app: App) {
+  setBeforeEach(router)
+  app.use(router);
 }

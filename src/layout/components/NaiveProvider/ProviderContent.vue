@@ -12,6 +12,4 @@ window.$loadingBar = useLoadingBar();
 window.$dialog = useDialog();
 window.$message = useMessage();
 window.$notification = useNotification();
-window.$loadingBar.start();
-setTimeout(() => { window.$loadingBar.finish(); }, 3000);
 </script>
