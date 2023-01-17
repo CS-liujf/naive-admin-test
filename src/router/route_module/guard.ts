@@ -1,11 +1,11 @@
 import { useRouteStore } from "@/store/route/permission";
-import { Router } from "vue-router";
+import { Router, isNavigationFailure } from "vue-router";
 import { dynamicRoutes } from "./dynamic";
 import { useUserStore } from "@/store/auth/user";
 
 export function setBeforeEach(router: Router): any {
     router.beforeEach((to, from, next) => {
-        // window.$loadingBar.start();
+        window.$loadingBar.start();
         const routeStore = useRouteStore();
         const userStore = useUserStore();
 
@@ -39,6 +39,16 @@ export function setBeforeEach(router: Router): any {
             }
         }
 
-        // window.$loadingBar.finish();
+
     })
+
+    router.afterEach((to, from, failure) => {
+        if (isNavigationFailure(failure)) {
+            console.log('failed navigation', failure);
+        } else {
+            window.$loadingBar.finish();
+        }
+
+    })
+
 }
