@@ -1,5 +1,5 @@
 <template>
-  <n-layout-content :content-style="className">
+  <n-layout-content :content-style="className"> 
     <router-view />
     <!--    <div style="background-color:#cddf;height:1000px">-->
     <!--      <n-button type="primary">-->
@@ -25,7 +25,7 @@ import { computed } from 'vue';
 // import SvgIcon from '@/components/SvgIcon/index.vue'
 // import ModeSwitch from '@/components/ModeSwitch/ModeSwitch.vue'
 
-const className = computed(() => (isDark.value ? 'padding: 18px 18px;background-color:#101014;min-height:92vh' : 'padding: 18px 18px;background-color:#f6f9f8;min-height:92vh'));
+const className = computed(() => (isDark.value ? 'padding: 18px 18px;background-color:#101014;min-height:92vh' : 'padding: 18px 18px;background-color:#f6f9f8;height:92vh'));
 // const className = 'padding: 18px 18px;background-color:#f6f9f8;min-height:92vh';
 // const color = computed(() => (isDark.value ? '#fff' : '#515151'))
 // const renderIcon = (iconName: string, size?:string, color?:ComputedRef) => {

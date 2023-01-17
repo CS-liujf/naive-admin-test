@@ -26,7 +26,6 @@ const breadcrumbItemList = computed(() => {
     },
   );
   routeMatched.shift();
-  console.log(route.matched);
   return routeMatched;
 });
 

@@ -3,8 +3,7 @@ import { RouteRecordRaw } from 'vue-router'
 import { staticRoutes } from '@/router/route_module/static';
 
 function isPermission(userRoles: Set<string>, page_roles: Array<string>): boolean {
-    page_roles[0] = '(' + page_roles[0] + ')';
-    const pageRoles = page_roles.reduce((res, item) => res + '||' + '(' + item + ')')
+    const pageRoles = page_roles.reduce((prev, cur) => { if (prev.length == 0) return '(' + cur + ')'; return prev + '||' + '(' + cur + ')' }, '')
         .replace(/\s*/g, "");
 
     let temp: string = '';
@@ -49,6 +48,7 @@ export const useRouteStore = defineStore('routePermission', {
         return {
             isGetUserInfo: false,
             userRoutes: [] as Array<RouteRecordRaw>, //用户完整路由表
+            filteredRoutes: [] as Array<RouteRecordRaw>, //过滤后用户完整的动态路由表
             userRoles: {} as Set<string>
         }
     },
@@ -66,8 +66,9 @@ export const useRouteStore = defineStore('routePermission', {
             this.userRoles = userRoles;
         },
         setUserRoutes(routes: Array<RouteRecordRaw>) {
+            this.filteredRoutes = routes;
             this.userRoutes = staticRoutes.concat(routes);
-            console.log(this.userRoutes)
+            console.log(this.filteredRoutes)
         }
     }
 })
