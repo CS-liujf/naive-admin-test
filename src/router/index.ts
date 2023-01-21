@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
-import { staticRoutes as routes } from './route_module/static'
 import { App } from 'vue';
+import { staticRoutes as routes } from './route_module/static';
 import { setBeforeEach } from './route_module/guard';
 
 export const router = createRouter({
