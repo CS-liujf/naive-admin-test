@@ -9,6 +9,6 @@ export const router = createRouter({
 });
 
 export default function setupRouter(app: App) {
-  setBeforeEach(router)
+  setBeforeEach(router);
   app.use(router);
 }

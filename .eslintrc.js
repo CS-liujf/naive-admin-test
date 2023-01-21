@@ -34,6 +34,7 @@ module.exports = {
       'error',
       { devDependencies: true },
     ],
+    'import/prefer-default-export': 'off',
   },
   settings: {
     // 安装eslint-import-resolver-typescript后在此配置import/resolver，即可读取项目根目录下tsconfig.json中的路径别名设置

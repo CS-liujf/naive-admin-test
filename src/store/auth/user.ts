@@ -1,51 +1,47 @@
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
 
 export const useUserStore = defineStore('user', {
-    state: () => {
-        return {
-            isLogin: false,
-            token: '',
-            userRoles: {} as Set<string>
-        }
+  state: () => ({
+    isLogin: false,
+    token: '',
+    userRoles: {} as Set<string>,
+  }),
+  getters: {
+
+  },
+  actions: {
+    getIsLogin(): boolean {
+      // 还没写自动登录功能
+      return this.isLogin;
     },
-    getters: {
 
+    loginHandler(token: string, userRoles: Array<string>) {
+      this.token = token;
+      localStorage.setItem('token', token);
+      this.userRoles = new Set(userRoles);
+      this.isLogin = true;
+      localStorage.setItem('userRoles', JSON.stringify(this.userRoles));
     },
-    actions: {
-        getIsLogin(): boolean {
-            //还没写自动登录功能
-            return this.isLogin;
-        },
 
-        loginHandler(token: string, userRoles: Array<string>) {
+    getToken(): string | null {
+      return this.token != null ? this.token : localStorage.getItem('token');
+    },
 
-            this.token = token;
-            console.log(this.token)
-            localStorage.setItem('token', token)
-            this.userRoles = new Set(userRoles);
-            this.isLogin = true;
-            localStorage.setItem('userRoles', JSON.stringify(this.userRoles))
-        },
+    getUserRoles(): Set<string> | null {
+      return this.userRoles.size !== 0 ? this.userRoles : JSON.parse(localStorage.getItem('userRoles') as string);
+    },
 
-        getToken(): string | null {
-            return this.token != null ? this.token : localStorage.getItem('token');
-        },
+    resetState() {
+      localStorage.removeItem('token');
+      localStorage.removeItem('userRoles');
+      this.token = '';
+      this.userRoles = {} as Set<string>;
+    },
 
-        getUserRoles(): Set<string> | null {
-            return this.userRoles.size != 0 ? this.userRoles : JSON.parse(localStorage.getItem('userRoles') as string);
-        },
+    loginoutHandler() {
+      this.resetState();
+      this.isLogin = false;
+    },
 
-        resetState() {
-            localStorage.removeItem('token');
-            localStorage.removeItem('userRoles');
-            this.token = '';
-            this.userRoles = {} as Set<string>
-        },
-
-        loginoutHandler() {
-            this.resetState()
-            this.isLogin = false
-        }
-
-    }
-})
+  },
+});
