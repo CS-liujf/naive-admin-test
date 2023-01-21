@@ -16,7 +16,7 @@ import type { MenuOption } from 'naive-ui';
 import { h } from 'vue';
 import SvgIcon from '@/components/SvgIcon/index.vue';
 import { useRouteStore } from '@/store/route/permission';
-import { RouteRecordRaw, RouterLink} from 'vue-router';
+import { RouteRecordRaw, RouterLink, useRoute} from 'vue-router';
 import { router } from '@/router';
 
 
@@ -48,11 +48,13 @@ const getMenus = function (routes: Array<RouteRecordRaw>, basePath: string): Men
     return res;
 }
 
+const route = useRoute();        
 function handleMenuSelect(key: string, item: MenuOption): void {
     if (/http(s)?:/.test(key)) {
         window.open(key);
     } else {
-        router.push(key)
+        if(key != route.path)
+            router.push(key)
     }
 }
 

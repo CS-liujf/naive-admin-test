@@ -5,7 +5,11 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
     {
         path: '/test1',
         component: layout,
-        meta: { title: 'test1页面', roles: ['admin'] as Array<string> },
+        meta: {
+            title: 'test1页面',
+            roles: ['admin'] as Array<string>,
+            icon: '笔记本电脑'
+        },
         children: [
             {
                 path: 'home',
@@ -14,7 +18,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                     title: '主页',
                     roles: ['admin'] as Array<string>,
                     icon: '笔记本电脑'
-                }
+                },
             },
             {
                 path: 'a',

@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 import { staticRoutes as routes } from './route_module/static'
 import { App } from 'vue';
 import { setBeforeEach } from './route_module/guard';
