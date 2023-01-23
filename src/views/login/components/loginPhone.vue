@@ -22,8 +22,12 @@
           v-model:value="formValue.valCode"
           placeholder="验证码"
         />
-        <n-button style="margin-left:8px;padding: 8px;">
-          获取验证码
+        <n-button
+          style="margin-left:8px;padding: 8px;min-width:91px;"
+          :disabled="countDown.timing"
+          @click="sendCode(30)"
+        >
+          {{ countDown.timing?`${countDown.count} 秒`:"获取验证码" }}
         </n-button>
       </n-form-item>
       <div>
@@ -44,7 +48,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { reactive, ref } from 'vue';
 import { FormInst } from 'naive-ui';
 
 const formRef = ref<FormInst | null>(null);
@@ -74,6 +78,20 @@ const handleValidateClick = (e: MouseEvent) => {
       window.$message.error('no');
     }
   });
+};
+
+const countDown = reactive<{timing:boolean; count:number}>({ timing: false, count: 0 });
+const sendCode = (interval:number) => {
+  countDown.timing = true;
+  countDown.count = interval;
+  const timer = setInterval(() => {
+    countDown.count -= 1;
+    if (countDown.count === 0) {
+      countDown.timing = false;
+      countDown.count = 0;
+      clearInterval(timer);
+    }
+  }, 1 * 1000);
 };
 </script>
 
