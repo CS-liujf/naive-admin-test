@@ -16,16 +16,19 @@
       </n-form-item>
       <n-form-item
         path="valCode"
+        style="margin-top:-20px"
       >
         <n-input
           v-model:value="formValue.valCode"
           placeholder="验证码"
         />
-        <n-button style="margin-left:8px">
+        <n-button style="margin-left:8px;padding: 8px;">
           获取验证码
         </n-button>
       </n-form-item>
-      <span>注册</span>
+      <div>
+        注册
+      </div>
       <n-form-item>
         <n-button
           attr-type="button"

@@ -14,7 +14,7 @@
   <!--    提交-->
   <!--  </button>-->
   <div class="login-page-container">
-    <div style="width:25%;margin-top: 18vh;height:56%">
+    <div style="width:350px;margin-top: 18vh;height:400px">
       <n-card
         style="height:100%"
         hoverable

@@ -16,6 +16,7 @@
       </n-form-item>
       <n-form-item
         path="password"
+        style="margin-top:-20px"
       >
         <n-input
           v-model:value="formValue.password"
