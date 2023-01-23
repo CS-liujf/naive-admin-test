@@ -1,6 +1,6 @@
 <template>
   <div class="qrcode-container">
-    <!--/*    <div style="position: relative;">*/-->
+    <!--    <div class="wrap">-->
     <qrcode-vue
       :value="qrcodeValue"
       :size="179"
@@ -10,6 +10,7 @@
     <div
       v-if="isStale"
       class="stale-qrcode-container"
+      @click="refreshCode"
     >
       <svg-icon
         name="刷新"
@@ -28,11 +29,20 @@ import { onUnmounted, ref } from 'vue';
 import SvgIcon from '@/components/SvgIcon/index.vue';
 
 const optionalArr = ['baidu.com', 'www.zhihu.com', 'jd.com'];
-
-const qrcodeValue = 'baidu.com';
-
+const qrcodeValue = ref('baidu.com');
+let index = 0;
 const isStale = ref(false);
-setTimeout(() => { isStale.value = true; }, 30 * 1000);
+const initCode = () => {
+  qrcodeValue.value = optionalArr[index];
+  setTimeout(() => { isStale.value = true; }, 3 * 1000);
+  index = (index + 1) % optionalArr.length;
+};
+initCode();
+
+const refreshCode = () => {
+  isStale.value = false;
+  initCode();
+};
 onUnmounted(() => {
   console.log('xiaohui');
 });
@@ -58,5 +68,8 @@ onUnmounted(() => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.stale-qrcode-container:hover {
+  cursor: pointer;
 }
 </style>
