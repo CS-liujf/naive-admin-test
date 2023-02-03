@@ -39,6 +39,10 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'warn',
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': 'warn',
+    // 关闭case-default的检查
+    'default-case': 'off',
+    // 关闭class method里必须有this的限制
+    'class-methods-use-this': 'off',
   },
   settings: {
     // 安装eslint-import-resolver-typescript后在此配置import/resolver，即可读取项目根目录下tsconfig.json中的路径别名设置
