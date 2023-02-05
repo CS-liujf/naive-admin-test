@@ -1,13 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" href="/favicon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title><%- title %></title>
-  </head>
-  <body>
-    <div id="app"></div>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 10;
+            width: 240px;
+            height: 150px;
+            margin-left: -120px;
+            margin-top: -75px;
+            border-radius: 5px;
+            background: #1e3f57;
+            animation: dot1_ 3s cubic-bezier(0.55, 0.3, 0.24, 0.99) infinite;
+        }
+
+        .loader:nth-child(2) {
+            z-index: 11;
+            width: 225px;
+            height: 135px;
+            margin-top: -67.5px;
+            margin-left: -112.5px;
+            border-radius: 3px;
+            background: #3c517d;
+            animation-name: dot2_;
+        }
+
+        .loader:nth-child(3) {
+            z-index: 12;
+            width: 60px;
+            height: 30px;
+            margin-top: 75px;
+            margin-left: -30px;
+            border-radius: 0 0 5px 5px;
+            background: #6bb2cd;
+            animation-name: dot3_;
+        }
+
+        @keyframes dot1_ {
+            3%, 97% {
+                width: 240px;
+                height: 150px;
+                margin-top: -75px;
+                margin-left: -120px;
+            }
+
+            30%, 36% {
+                width: 80px;
+                height: 120px;
+                margin-top: -60px;
+                margin-left: -40px;
+            }
+
+            63%, 69% {
+                width: 40px;
+                height: 80px;
+                margin-top: -40px;
+                margin-left: -20px;
+            }
+        }
+
+        @keyframes dot2_ {
+            3%, 97% {
+                height: 135px;
+                width: 225px;
+                margin-left: -112.5px;
+                margin-top: -67.5px;
+            }
+
+            30%, 36% {
+                width: 70px;
+                height: 96px;
+                margin-left: -35px;
+                margin-top: -48px;
+            }
+
+            63%, 69% {
+                width: 32px;
+                height: 60px;
+                margin-left: -16px;
+                margin-top: -30px;
+            }
+        }
+
+        @keyframes dot3_ {
+            3%, 97% {
+                height: 30px;
+                width: 60px;
+                margin-left: -30px;
+                margin-top: 75px;
+            }
+
+            30%, 36% {
+                width: 8px;
+                height: 8px;
+                margin-left: -5px;
+                margin-top: 49px;
+                border-radius: 8px;
+            }
+
+            63%, 69% {
+                width: 10px;
+                height: 2px;
+                margin-left: -5px;
+                margin-top: -36px;
+                border-radius: 10px;
+            }
+        }
+
+        .loader-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            background-color: #edf2f4;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="loader-container">
+            <div class="loader"></div>
+            <div class="loader"></div>
+            <div class="loader"></div>
+        </div>
+    </div>
     <script type="module" src="/src/main.ts"></script>
-  </body>
+</body>
 </html>
