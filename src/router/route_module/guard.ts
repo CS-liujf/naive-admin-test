@@ -1,6 +1,7 @@
 import { useRouteStore } from '@/store/route/permission';
 import { Router, isNavigationFailure } from 'vue-router';
 import { useUserStore } from '@/store/auth/user';
+import { whiteList } from '@/router/route_module/static';
 import { dynamicRoutes } from './dynamic';
 
 export function setBeforeEach(router: Router): any {
@@ -29,7 +30,7 @@ export function setBeforeEach(router: Router): any {
         userStore.resetState();
         next(`/login?redirect=${to.path}`);
       }
-    } else if (to.path === '/login') {
+    } else if (whiteList.indexOf(to.path) !== -1) {
       next();
     } else {
       next(`/login?redirect=${to.path}`);

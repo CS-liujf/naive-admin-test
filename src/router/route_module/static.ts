@@ -1,5 +1,4 @@
 import { RouteRecordRaw } from 'vue-router';
-import login from '@/views/login/login.vue';
 
 export const staticRoutes: Array<RouteRecordRaw> = [
   {
@@ -8,7 +7,8 @@ export const staticRoutes: Array<RouteRecordRaw> = [
   },
   {
     path: '/login',
-    component: login,
+    component: () => import('@/views/login/login.vue'),
   },
-
 ];
+
+export const whiteList = ['/login', '/register']; // 不需要重定向的界面
