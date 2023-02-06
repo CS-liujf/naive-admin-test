@@ -30,9 +30,9 @@
           {{ countDown.timing?`${countDown.count} 秒`:"获取验证码" }}
         </n-button>
       </n-form-item>
-      <div>
+      <router-link to="/register">
         注册
-      </div>
+      </router-link>
       <n-form-item>
         <n-button
           attr-type="button"

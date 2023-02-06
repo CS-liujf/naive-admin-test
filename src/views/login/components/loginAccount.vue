@@ -24,7 +24,9 @@
         />
       </n-form-item>
       <div style="width:100%;display:flex;justify-content:space-between;">
-        <span>注册</span>
+        <router-link to="/register">
+          注册
+        </router-link>
         <span>忘记密码</span>
       </div>
       <n-form-item>
