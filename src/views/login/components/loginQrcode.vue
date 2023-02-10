@@ -3,7 +3,7 @@
     <!--    <div class="wrap">-->
     <qrcode-vue
       :value="qrcodeValue"
-      :size="179"
+      :size="169"
       level="M"
       render-as="svg"
     />
@@ -27,6 +27,9 @@
 import QrcodeVue from 'qrcode.vue';
 import { onUnmounted, ref } from 'vue';
 import SvgIcon from '@/components/SvgIcon/index.vue';
+import { login } from '@/api/user';
+
+login().then((res) => console.log(res));
 
 const optionalArr = ['baidu.com', 'www.zhihu.com', 'jd.com'];
 const qrcodeValue = ref('baidu.com');
@@ -62,8 +65,8 @@ onUnmounted(() => {
   opacity:0.95;
   margin-top:-13%;
   background-color:#f7eedf;
-  width:180px;
-  height:180px;
+  width:170px;
+  height:170px;
   display:flex;
   flex-direction: column;
   justify-content: center;
