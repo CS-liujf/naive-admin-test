@@ -10,14 +10,16 @@ declare module '*.vue' {
       $notification: NotificationProviderInst,
       $loadingBar: LoadingBarProviderInst
     }
-    //这里必须增加该接口，否则编译器认为环境变量不存在于ImportMeta类型中
-    interface ImportMetaEnv {
-      VITE_APP_TITLE: string,
-      VITE_APP_BASEURL: string,
-      [propName: string]: number | string | boolean | Array<string>
-    }
   }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types
   const component: DefineComponent<{}, {}, any>
   export default component
+}
+//代码中获取这些以 VITE_ 为前缀的用户自定义环境变量的 TypeScript 智能提示
+interface ImportMetaEnv {
+  VITE_APP_TITLE: string,
+  VITE_APP_BASEURL: string,
+}
+interface ImportMeta {
+  readonly env: ImportMetaEnv
 }
