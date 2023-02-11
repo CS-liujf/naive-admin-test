@@ -1,9 +1,15 @@
 import { createProdMockServer } from 'vite-plugin-mock/es/createProdMockServer';
 
-import userModule from './api/user-mock';
-// @ts-ignore
-// const modules = import.meta.globEager('./**/*.ts');
+const apiModules:any[] = [];
+const files = import.meta.globEager('./**/*.ts');
+Object.keys(files).forEach((key) => {
+  // 可根据文件名判断哪些ts文件忽略
+  // if (condition) {
+  // return;
+  // }
+  apiModules.push(...files[key].default);
+});
 
 export function setupProdMockServer() {
-  createProdMockServer([...userModule]);
+  createProdMockServer([...apiModules]);
 }

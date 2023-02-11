@@ -43,9 +43,12 @@ export default defineConfig({
       title: '可视化打包分析',
     }),
     viteMockServe({
-      mockPath: 'mock',
+      mockPath: 'mock/api',
+      // 由于该插件会自动读取mockPath下的所有ts文件，所以可以设置ignore来忽略某些ts文件
+      // ignore: /^_/,
       watchFiles: true,
       localEnabled: true,
+      // 如果想生产环境引入mock则将以下注释打开
       // prodEnabled: true,
       // injectCode: `
       //     import { setupProdMockServer } from '/mock/mockProdServer';
