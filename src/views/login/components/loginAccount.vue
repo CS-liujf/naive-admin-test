@@ -31,10 +31,11 @@
       </div>
       <n-form-item>
         <n-button
+          :loading="loginLoading"
           attr-type="button"
           style="width:100%"
           type="primary"
-          @click="handleValidateClick"
+          @click="submit"
         >
           登录
         </n-button>
@@ -46,6 +47,10 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { FormInst } from 'naive-ui';
+import { useRequest } from 'vue-request';
+import { login as loginRequest } from '@/api/user';
+import { useUserStore } from '@/store/auth/user';
+import { router } from '@/router';
 
 const formRef = ref<FormInst | null>(null);
 const formValue = ref({
@@ -64,11 +69,21 @@ const rules = {
     trigger: ['input', 'blur'],
   },
 };
-const handleValidateClick = (e: MouseEvent) => {
+
+const userStore = useUserStore();
+const { loading: loginLoading, run: runLoginRequest } = useRequest(loginRequest, {
+  manual: true,
+  onSuccess: (data:any) => {
+    userStore.loginHandler(data.token, data.userRoles);
+    router.push('/test1');
+  },
+});
+const submit = (e: MouseEvent) => {
   e.preventDefault();
   formRef.value?.validate((errors) => {
     if (!errors) {
-      window.$message.success('yes');
+      // window.$message.success('yes');
+      runLoginRequest();
     } else {
       console.log(errors);
       window.$message.error('no');

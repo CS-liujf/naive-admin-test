@@ -13,7 +13,7 @@ instance.interceptors.request.use(
 );
 
 instance.interceptors.response.use(
-  (response: AxiosResponse) => response.data,
+  (response: AxiosResponse) => response.data.data,
   (error:AxiosError) => {
     console.log(error);
   },

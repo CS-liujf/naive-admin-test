@@ -16,9 +16,10 @@ export default [
     method: 'post',
     timeout: 2000,
     response: () => ({
-      code: 0,
+      code: 1,
       data: {
-        name: 'na',
+        userRoles: ['admin', 'b'],
+        token: 'na',
       },
     }),
   },
