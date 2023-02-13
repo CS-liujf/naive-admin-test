@@ -1,21 +1,15 @@
 <template>
-  <n-layout-content :content-style="className"> 
-    <router-view />
-    <!--    <div style="background-color:#cddf;height:1000px">-->
-    <!--      <n-button type="primary">-->
-    <!--        测试-->
-    <!--      </n-button>-->
-    <!--    </div>-->
-    <!--    <n-dropdown :options="options">-->
-    <!--      <n-button>用户资料</n-button>-->
-    <!--    </n-dropdown>-->
-    <!--    <n-icon size="3em" depth="3">-->
-    <!--      <SvgIcon name="home" size="2em"></SvgIcon>-->
-    <!--    </n-icon>-->
-    <!--    <SvgIcon name="moon" size="30"></SvgIcon>-->
-    <!--    <div style="width:100px;height:100px;">-->
-    <!--    <ModeSwitch></ModeSwitch>-->
-    <!--    </div>-->
+  <n-layout-content :content-style="className">
+    <router-view v-slot="{Component,route}">
+      <transition
+        name="content"
+      >
+        <component
+          :is="Component"
+          :key="route.path"
+        />
+      </transition>
+    </router-view>
   </n-layout-content>
 </template>
 
@@ -42,5 +36,7 @@ const className = computed(() => (isDark.value ? 'padding: 18px 18px;background-
 </script>
 
 <style scoped>
-
+.content-enter-active{
+  animation: fadeIn 0.3s;
+}
 </style>
