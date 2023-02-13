@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-import { isDark } from '@/util/switchMode';
+import { isDark } from '@/utils/switchMode';
 import { computed } from 'vue';
 // import SvgIcon from '@/components/SvgIcon/index.vue'
 // import ModeSwitch from '@/components/ModeSwitch/ModeSwitch.vue'

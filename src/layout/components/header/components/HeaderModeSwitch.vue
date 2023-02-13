@@ -15,7 +15,7 @@
 <script lang="ts" setup>
 import HoverContainer from '@/components/HoverContainer/HoverContainer.vue';
 import ModeSwitch from '@/components/ModeSwitch/ModeSwitch.vue';
-import { isDark } from '@/util/switchMode';
+import { isDark } from '@/utils/switchMode';
 import { computed } from 'vue';
 
 const message = computed(() => (isDark.value ? '切换白天模式' : '切换夜间模式'));

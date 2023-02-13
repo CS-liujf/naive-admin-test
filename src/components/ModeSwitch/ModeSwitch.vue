@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts" setup>
-import { isDark, switchMode } from '@/util/switchMode';
+import { isDark, switchMode } from '@/utils/switchMode';
 import SvgIcon from '../SvgIcon/index.vue';
 </script>
 

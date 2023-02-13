@@ -36,7 +36,7 @@
 </template>
 <script lang="ts" setup>
 import { useMessage } from 'naive-ui';
-import { switchMode } from '@/util/switchMode';
+import { switchMode } from '@/utils/switchMode';
 import ModeSwitch from '@/components/ModeSwitch/ModeSwitch.vue';
 import showMes from './temp';
 

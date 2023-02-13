@@ -1,15 +1,14 @@
 <template>
-<div :class=className>
-  <slot></slot>
-</div>
+  <div :class="className">
+    <slot />
+  </div>
 </template>
 
 <script lang="ts" setup>
-import {computed} from 'vue'
-import {isDark} from "@/util/switchMode"
-const className=computed(()=>{
-  return !isDark.value? 'hover-container light-container' : 'hover-container dark-container'
-})
+import { computed } from 'vue';
+import { isDark } from '@/utils/switchMode';
+
+const className = computed(() => (!isDark.value ? 'hover-container light-container' : 'hover-container dark-container'));
 </script>
 
 <style scoped>

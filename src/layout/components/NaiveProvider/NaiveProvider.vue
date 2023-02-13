@@ -20,7 +20,7 @@
 <script setup lang="ts">
 // 引入的组件是为了给window对象挂载方法
 import { GlobalThemeOverrides } from 'naive-ui';
-import { theme } from '@/util/switchMode';
+import { theme } from '@/utils/switchMode';
 import ProviderContent from './ProviderContent.vue';
 // 设置主题
 const themeOverrides: GlobalThemeOverrides = {
