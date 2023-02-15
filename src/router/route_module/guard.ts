@@ -10,25 +10,33 @@ export function setBeforeEach(router: Router): any {
     const routeStore = useRouteStore();
     const userStore = useUserStore();
 
-    if (userStore.getIsLogin()) {
-      if (routeStore.isGetUserInfo) {
-        next();
-        // window.$loadingBar.finish();
-        return;
-      }
-      try {
-        routeStore.setUserRoles(userStore.userRoles);
-        const filteredRoutes = routeStore.generateRoutes(dynamicRoutes);
-        filteredRoutes.forEach((route) => {
-          router.addRoute(route);
-        });
-        routeStore.setIsGetUserInfo(true);
-        routeStore.setUserRoutes(filteredRoutes);
-        next({ ...to, replace: true });
-      } catch (error) {
-        console.log('error: ', error);
-        userStore.resetState();
-        next(`/login?redirect=${to.path}`);
+    if (userStore.getLoginStatus()) {
+      if (to.path === '/login') {
+        // 如果已经登录了则重定向到主页
+        next({ path: '/' });
+      } else {
+        if (routeStore.hasRoutes()) {
+        // 此时代表用户的路由表已经生成好了，访问权限不够的页面也会导向404，该如何导向403？
+          next();
+          return;
+        }
+        // console.log(to.path);
+        // console.log('create routes');
+        try {
+          routeStore.setUserRoles(userStore.userRoles);
+          const filteredRoutes = routeStore.generateRoutes(dynamicRoutes);
+          filteredRoutes.forEach((route) => {
+            router.addRoute(route);
+          });
+          routeStore.setIsGetUserInfo(true);
+          routeStore.setUserRoutes(filteredRoutes);
+          // console.log('routes have been successfully created');
+          next({ ...to, replace: true });
+        } catch (error) {
+          console.log('guard error: ');
+          userStore.resetState();
+          next(`/login?redirect=${to.path}`);
+        }
       }
     } else if (whiteList.indexOf(to.path) !== -1) {
       next();

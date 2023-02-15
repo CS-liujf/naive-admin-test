@@ -3,7 +3,7 @@ import { RouteRecordRaw } from 'vue-router';
 export const staticRoutes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/login',
+    redirect: '/test1/home',
   },
   {
     path: '/login',

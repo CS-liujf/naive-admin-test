@@ -54,6 +54,9 @@ export const useRouteStore = defineStore('routePermission', {
 
   },
   actions: {
+    hasRoutes() {
+      return this.filteredRoutes.length > 0;
+    },
     generateRoutes(dynamicRoutes: Array<RouteRecordRaw>): Array<RouteRecordRaw> {
       return filterDynamicRoutes(dynamicRoutes, this.userRoles);
     },
@@ -66,7 +69,7 @@ export const useRouteStore = defineStore('routePermission', {
     setUserRoutes(routes: Array<RouteRecordRaw>) {
       this.filteredRoutes = routes;
       this.userRoutes = staticRoutes.concat(routes);
-      console.log(this.filteredRoutes);
+      // console.log(this.filteredRoutes);
     },
   },
 });
