@@ -43,7 +43,7 @@ class MylocalStorage {
       }
       item.expires = expiredDate;
     }
-    localStorage.setItem(key, JSON.stringify(value));
+    localStorage.setItem(key, JSON.stringify(item));
   }
 
   getItem(key: string) {
