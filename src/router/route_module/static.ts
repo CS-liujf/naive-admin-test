@@ -14,9 +14,9 @@ export const staticRoutes: Array<RouteRecordRaw> = [
     component: () => import('@/views/register/register.vue'),
   },
   {
-    path: '/404',
+    path: '/:catchAll(.*)',
     component: () => import('@/views/error-page/404.vue'),
   },
 ];
 
-export const whiteList = ['/login', '/register', '/404']; // 不需要重定向的界面
+export const whiteList = ['/login', '/register']; // 不需要重定向的界面
