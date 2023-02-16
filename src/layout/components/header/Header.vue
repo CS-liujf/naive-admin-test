@@ -38,7 +38,7 @@ import HeaderAvatar from './components/HeaderAvatar.vue';
   position: sticky;
   top: 0;
   z-index: 1000;
-  height: 8vh;
+  height: 54px;
   /* height: 54px; */
   width: 100%;
   box-shadow: 0 1px 2px rgb(0 21 41 / 8%);
