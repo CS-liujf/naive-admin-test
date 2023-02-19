@@ -20,6 +20,9 @@
 import HoverContainer from '@/components/HoverContainer/HoverContainer.vue';
 import { h } from 'vue';
 import SvgIcon from '@/components/SvgIcon/index.vue';
+import { useUserStore } from '@/store/auth/user';
+import { router as router2 } from '@/router';
+import { useRouter } from 'vue-router';
 
 // const color=computed(()=>{
 //   return isDark.value ? '#fff':'#515151'
@@ -42,6 +45,8 @@ const options = [
     icon: renderIcon('退出', '1.3em'),
   },
 ];
+const userStore = useUserStore();
+const router = useRouter();
 const handleSelect = (key:string) => {
   // console.log(key);
   if (key === 'logout') {
@@ -50,6 +55,10 @@ const handleSelect = (key:string) => {
       content: '您确定要退出登录吗？',
       positiveText: '确定',
       negativeText: '取消',
+      onPositiveClick: () => {
+        userStore.logoutHandler();
+        router.push('/login');
+      },
     });
   }
 };
