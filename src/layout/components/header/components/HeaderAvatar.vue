@@ -21,8 +21,7 @@ import HoverContainer from '@/components/HoverContainer/HoverContainer.vue';
 import { h } from 'vue';
 import SvgIcon from '@/components/SvgIcon/index.vue';
 import { useUserStore } from '@/store/auth/user';
-import { router as router2 } from '@/router';
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 
 // const color=computed(()=>{
 //   return isDark.value ? '#fff':'#515151'
@@ -47,6 +46,7 @@ const options = [
 ];
 const userStore = useUserStore();
 const router = useRouter();
+const route = useRoute();
 const handleSelect = (key:string) => {
   // console.log(key);
   if (key === 'logout') {
@@ -60,6 +60,8 @@ const handleSelect = (key:string) => {
         router.push('/login');
       },
     });
+  } else if (key === 'user-center') {
+    if (route.path !== '/me') router.push('/me');
   }
 };
 </script>
