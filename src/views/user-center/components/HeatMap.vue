@@ -98,6 +98,7 @@ const option: EChartsOption = {
     splitLine: false,
     range: getDateRange(),
     itemStyle: {
+      color: 'rgb(255,255,255,0)',
       borderWidth: 3,
       borderColor: 'rgba(255, 255, 255, 0)',
     },
