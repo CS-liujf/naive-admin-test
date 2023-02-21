@@ -59,6 +59,22 @@ function getVirtualData(year: string) {
   }
   return data;
 }
+
+function getDateRange() {
+  const res:string[] = ['', ''];
+  const date = new Date();
+  let year = date.getFullYear();
+  let month = date.getMonth() + 1;
+  let day = date.getDate();
+  res[1] = `${year}-${month < 10 ? (`0${month}`) : month}-${day < 10 ? (`0${day}`) : day}`;
+  date.setDate(date.getDate() - 364);
+  year = date.getFullYear();
+  month = date.getMonth() + 1;
+  day = date.getDate();
+  res[0] = `${year}-${month < 10 ? (`0${month}`) : month}-${day < 10 ? (`0${day}`) : day}`;
+  return res;
+}
+
 const option: EChartsOption = {
   title: {
     top: 30,
@@ -78,17 +94,23 @@ const option: EChartsOption = {
     top: 120,
     left: 30,
     right: 30,
-    cellSize: ['auto', 13],
-    range: '2016',
+    cellSize: ['auto', 14],
+    splitLine: false,
+    range: getDateRange(),
     itemStyle: {
-      borderWidth: 0.5,
+      borderWidth: 3,
+      borderColor: 'rgba(255, 255, 255, 0)',
+    },
+    dayLabel: {
+      margin: '60%',
+      nameMap: ['', '一', '', '三', '', '五', ''],
     },
     yearLabel: { show: false },
   },
   series: {
     type: 'heatmap',
     coordinateSystem: 'calendar',
-    data: getVirtualData('2016'),
+    data: getVirtualData('2022'),
   },
   backgroundColor: '',
 };
@@ -98,7 +120,7 @@ let myChart:echarts.ECharts;
 const chartTheme = computed(() => (isDark.value ? 'dark' : 'light'));
 const renderChart = (element:HTMLElement) => {
   myChart?.dispose();
-  myChart = echarts.init(element, chartTheme.value);
+  myChart = echarts.init(element, chartTheme.value, { locale: 'ZH' });
   myChart.setOption(option);
 };
 
