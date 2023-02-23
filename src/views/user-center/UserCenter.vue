@@ -11,7 +11,7 @@
           vertical
         >
           <heat-map />
-          <history-log @select-year="selectYear" />
+          <history-log @change-year="selectYear" />
         </n-space>
       </n-grid-item>
       <n-grid-item :span="1">

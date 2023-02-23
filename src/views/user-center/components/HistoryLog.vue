@@ -41,10 +41,13 @@ const options = reactive<MenuOption[]>([
   },
 ]);
 
-const emit = defineEmits(['selectYear']);
+interface Emits{
+  (event:'changeYear', year:string):void
+}
+const emit = defineEmits<Emits>();
 const selectYear = async (key:string, item:MenuOption) => {
   console.log(item);
-  emit('selectYear', item.label);
+  emit('changeYear', item.label as string);
 };
 </script>
 
