@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueuse/core": "^9.13.0",
     "animate.css": "^4.1.1",
     "axios": "^0.26.1",
     "echarts": "^5.4.1",

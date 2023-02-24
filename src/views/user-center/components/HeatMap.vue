@@ -15,6 +15,7 @@ import {
   onMounted, ref, watch, computed,
 } from 'vue';
 import { isDark } from '@/utils/switchMode';
+import { useDebounceFn } from '@vueuse/core';
 import * as echarts from 'echarts/core';
 import {
   TitleComponent,
@@ -137,25 +138,11 @@ const renderChart = (element:HTMLElement) => {
   myChart.setOption(option);
 };
 
-function debounce(fun:Function, delay = 400) {
-  // 定时器容器
-  let timer = null;
-  // 返回一个函数
-  return (...args:any[]) => {
-    // 清除定时器  可以保证该函数如果多次连续单位400ms毫秒内调用 ，只执行一次
-    if (timer) clearInterval(timer);
-    // 定时器
-    timer = setTimeout(() => {
-      fun.call(this, ...args);
-    }, delay);
-  };
-}
-
 let resizeOb:ResizeObserver;
 onMounted(() => {
   renderChart(chartDom.value!);
   resizeOb = new ResizeObserver(
-    debounce(() => {
+    useDebounceFn(() => {
       // 如果容器里有多个图表就可以如下调用
       // entries.forEach((entry) => {
       //   echarts.getInstanceByDom(entry.target as unknown as HTMLElement)?.resize();
