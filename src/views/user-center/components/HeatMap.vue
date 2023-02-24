@@ -47,8 +47,9 @@ type EChartsOption = echarts.ComposeOption<
     >;
 
 function getVirtualData(year: string) {
-  const date = +echarts.time.parse(`${year}-01-01`);
-  const end = +echarts.time.parse(`${+year + 1}-01-01`);
+  // const date = +echarts.time.parse(`${year}-01-01`);
+  const date = +echarts.time.parse(getDateRange()[0]);
+  const end = +echarts.time.parse(getDateRange()[1]);
   const dayTime = 3600 * 24 * 1000;
   const data: [string, number][] = [];
   for (let time = date; time < end; time += dayTime) {
@@ -83,19 +84,30 @@ const option: EChartsOption = {
   },
   tooltip: {},
   visualMap: {
+    show: false,
     min: 0,
     max: 10000,
     type: 'piecewise',
     orient: 'horizontal',
     left: 'center',
     top: 65,
+    pieces: [
+      { value: 0, color: 'rgba(179,179,179,0.3)' },
+      { gt: 0, lte: 2000, color: '#f5eea3' },
+      { gt: 2000, lte: 4000, color: '#edd798' },
+      { gt: 4000, lte: 6000, color: '#d58f77' },
+      { gt: 6000, lte: 8000, color: '#c86f63' },
+      { gt: 8000, color: '#bf444c' },
+    ],
   },
   calendar: {
-    top: 120,
+    top: 100,
     left: 30,
     right: 30,
     cellSize: ['auto', 14],
-    splitLine: false,
+    splitLine: {
+      show: false,
+    },
     range: getDateRange(),
     itemStyle: {
       color: 'rgb(255,255,255,0)',
