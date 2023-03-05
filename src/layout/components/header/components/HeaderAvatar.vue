@@ -1,19 +1,12 @@
 <template>
   <!--<HoverContainer style="line-height:1.5rem">-->
-  <n-dropdown
-    trigger="click"
-    :options="options"
-    @select="handleSelect"
-  >
+  <n-dropdown trigger="click" :options="options" @select="handleSelect">
     <HoverContainer style="padding:0 8px">
-      <SvgIcon
-        name="头像"
-        size="2.2em"
-      />
+      <SvgIcon name="头像" size="2.4em" />
       <span class="username-span">username</span>
     </HoverContainer>
   </n-dropdown>
-<!--</HoverContainer>-->
+  <!--</HoverContainer>-->
 </template>
 
 <script lang="ts" setup>
@@ -27,7 +20,7 @@ import { useRouter, useRoute } from 'vue-router';
 //   return isDark.value ? '#fff':'#515151'
 // })
 
-const renderIcon = (iconName: string, size?:string) => () => h(SvgIcon, { name: iconName, size });
+const renderIcon = (iconName: string, size?: string) => () => h(SvgIcon, { name: iconName, size });
 const options = [
   {
     label: '用户中心',
@@ -47,7 +40,7 @@ const options = [
 const userStore = useUserStore();
 const router = useRouter();
 const route = useRoute();
-const handleSelect = (key:string) => {
+const handleSelect = (key: string) => {
   // console.log(key);
   if (key === 'logout') {
     window.$dialog.warning({
@@ -67,9 +60,9 @@ const handleSelect = (key:string) => {
 </script>
 
 <style scoped>
-.username-span{
+.username-span {
   padding-left: 8px;
-  font-size:medium;
+  font-size: medium;
   line-height: 1.5rem;
 }
 </style>

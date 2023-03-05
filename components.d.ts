@@ -4,9 +4,11 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AvatarEdit: typeof import('./src/components/AvatarEdit/AvatarEdit.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     HoverContainer: typeof import('./src/components/HoverContainer/HoverContainer.vue')['default']
     ModeSwitch: typeof import('./src/components/ModeSwitch/ModeSwitch.vue')['default']
+    NAvatar: typeof import('naive-ui')['NAvatar']
     NBreadcrumb: typeof import('naive-ui')['NBreadcrumb']
     NBreadcrumbItem: typeof import('naive-ui')['NBreadcrumbItem']
     NButton: typeof import('naive-ui')['NButton']
@@ -27,12 +29,16 @@ declare module 'vue' {
     NLoadingBarProvider: typeof import('naive-ui')['NLoadingBarProvider']
     NMenu: typeof import('naive-ui')['NMenu']
     NMessageProvider: typeof import('naive-ui')['NMessageProvider']
+    NModal: typeof import('naive-ui')['NModal']
     NNotificationProvider: typeof import('naive-ui')['NNotificationProvider']
     NSelect: typeof import('naive-ui')['NSelect']
     NSpace: typeof import('naive-ui')['NSpace']
     NTabPane: typeof import('naive-ui')['NTabPane']
     NTabs: typeof import('naive-ui')['NTabs']
     NTooltip: typeof import('naive-ui')['NTooltip']
+    NUpload: typeof import('naive-ui')['NUpload']
+    NUploadFileList: typeof import('naive-ui')['NUploadFileList']
+    NUploadTrigger: typeof import('naive-ui')['NUploadTrigger']
     SvgIcon: typeof import('./src/components/SvgIcon/index.vue')['default']
   }
 }
