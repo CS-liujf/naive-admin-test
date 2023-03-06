@@ -4,7 +4,10 @@
     trigger="hover"
   >
     <template #trigger>
-      <HoverContainer style="padding:0 2px">
+      <HoverContainer
+        style="padding:0 2px;width:36px"
+        @click="switchMode()"
+      >
         <ModeSwitch />
       </HoverContainer>
     </template>
@@ -15,7 +18,7 @@
 <script lang="ts" setup>
 import HoverContainer from '@/components/HoverContainer/HoverContainer.vue';
 import ModeSwitch from '@/components/ModeSwitch/ModeSwitch.vue';
-import { isDark } from '@/utils/switchMode';
+import { isDark, switchMode } from '@/utils/switchMode';
 import { computed } from 'vue';
 
 const message = computed(() => (isDark.value ? '切换白天模式' : '切换夜间模式'));

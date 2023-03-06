@@ -1,7 +1,7 @@
 <template>
   <div
     class="svg-container"
-    @click="switchMode()"
+    @click.stop="switchMode()"
   >
     <SvgIcon
       v-if="isDark"
