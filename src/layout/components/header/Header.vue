@@ -6,6 +6,7 @@
       <HeaderBreadCrumb />
     </div>
     <div class="container-right">
+      <HeaderMessage />
       <HeaderModeSwitch />
       <HeaderAvatar />
     </div>
@@ -17,6 +18,7 @@
 <script lang="ts" setup>
 import HeaderCollapse from '@/layout/components/header/components/HeaderCollapse.vue';
 import HeaderBreadCrumb from '@/layout/components/header/components/HeaderBreadCrumb.vue';
+import HeaderMessage from './components/HeaderMessage.vue';
 import HeaderModeSwitch from './components/HeaderModeSwitch.vue';
 import HeaderAvatar from './components/HeaderAvatar.vue';
 // import {computed} from "vue"
