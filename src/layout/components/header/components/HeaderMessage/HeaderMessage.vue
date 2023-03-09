@@ -106,10 +106,10 @@ const scrollbarThumbColor = computed(() => (isDark.value ? 'scroller-dark' : 'sc
   width: 0;
 }
 .scroller:hover::-webkit-scrollbar{
-  width: 4px;
+  width: 5px;
 }
 .scroller::-webkit-scrollbar-thumb{
-  border-radius: 11px;
+  border-radius: 10px;
 }
 .scroller-light::-webkit-scrollbar-thumb{
   background-color: rgba(0,0,0,0.1)
