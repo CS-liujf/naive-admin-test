@@ -52,25 +52,26 @@
         name="私信"
         tab="私信"
       >
-        <n-scrollbar
+        <div
           ref="scroller"
-          style="height: 120px"
+          class="scroller"
+          :class="scrollbarThumbColor"
         >
           <div v-for="item in 12">
             {{ item }}
           </div>
-        </n-scrollbar>
+        </div>
       </n-tab-pane>
     </n-tabs>
-
-    <n-space
-      justify="space-around"
-      style="padding-top:6px;"
-    >
-      <div>fsdf</div>
-      <div>fsdf</div>
-      <div>fsdf</div>
-    </n-space>
+    <template #footer>
+      <n-space
+        justify="space-around"
+      >
+        <div>fsdf</div>
+        <div>fsdf</div>
+        <div>fsdf</div>
+      </n-space>
+    </template>
   </n-popover>
 </template>
 <script lang="ts" setup>
@@ -89,9 +90,31 @@ useInfiniteScroll(
   },
   { distance: 10 },
 );
-const iconColor = computed(() => (isDark.value ? 'white' : '#515151'));
 
-// const func = (event:Event) => console.log(event.target!.clientHeight);
+const iconColor = computed(() => (isDark.value ? '#e6e6e6' : '#515151'));
+// const scrollbarThumbColor = computed(() => (
+// isDark.value ? 'rgba(195,195,195,0.27)' : 'rgba(0,0,0,0.2)'));
+const scrollbarThumbColor = computed(() => (isDark.value ? 'scroller-dark' : 'scroller-light'));
+
 </script>
 <style scoped>
+.scroller{
+  max-height: 200px;
+  overflow-y: scroll;
+}
+.scroller::-webkit-scrollbar{
+  width: 0;
+}
+.scroller:hover::-webkit-scrollbar{
+  width: 4px;
+}
+.scroller::-webkit-scrollbar-thumb{
+  border-radius: 11px;
+}
+.scroller-light::-webkit-scrollbar-thumb{
+  background-color: rgba(0,0,0,0.1)
+}
+.scroller-dark::-webkit-scrollbar-thumb{
+  background-color: rgba(195,195,195,0.27)
+}
 </style>
