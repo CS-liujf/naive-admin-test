@@ -18,6 +18,8 @@
       </template>
       点击上传新头像
     </n-tooltip>
+
+    <!--    头像编辑弹窗-->
     <n-modal
       v-model:show="showEditModal"
       preset="card"
@@ -43,23 +45,48 @@
             />
             <n-space
               justify="space-between"
-              style="margin-top: 6px"
+              style="margin-top: 8px"
             >
-              <div>重新上传</div>
+              <n-button
+                type="info"
+                size="small"
+                text
+                @click="openFileWindow"
+              >
+                重新上传
+              </n-button>
               <n-space>
-                <svg-icon
-                  name="逆时针旋转"
-                  size="25"
+                <n-button
+                  circle
+                  size="small"
+                  text
                   @click="rotateLeft"
-                />
-                <svg-icon
-                  name="顺时针旋转"
-                  size="25"
+                >
+                  <template #icon>
+                    <svg-icon
+                      size="25"
+                      name="逆时针旋转"
+                    />
+                  </template>
+                </n-button>
+                <n-button
+                  circle
+                  size="small"
+                  text
                   @click="rotateRight"
-                />
+                >
+                  <template #icon>
+                    <svg-icon
+                      size="25"
+                      name="顺时针旋转"
+                    />
+                  </template>
+                </n-button>
               </n-space>
             </n-space>
           </div>
+
+          <!--          预览区-->
           <div class="preview-container">
             <span>预览</span>
             <div :style="previewStyle1">
@@ -77,7 +104,7 @@
       <!--      底部按钮-->
       <template #footer>
         <n-space justify="end">
-          <n-button>
+          <n-button @click="showEditModal=false">
             取消
           </n-button>
           <n-button
@@ -113,12 +140,12 @@ const option = reactive<Opt>({
 });
 const inputRef = ref<HTMLInputElement>();
 function openFileWindow() {
-  inputRef.value?.click();
+  inputRef.value!.click();
 }
 const showEditModal = ref(false);
 function handleChange() {
+  console.log(inputRef.value!.files!.length);
   const file = inputRef.value!.files![0];
-  console.log(file);
   showEditModal.value = true;
   const reader = new FileReader();
   reader.readAsDataURL(file);
@@ -156,6 +183,7 @@ const confirm = () => {
   });
 };
 
+// const reSelect
 const rotateLeft = () => cropper.value.rotateLeft();
 const rotateRight = () => cropper.value.rotateRight();
 
