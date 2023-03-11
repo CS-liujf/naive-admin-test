@@ -144,16 +144,17 @@ function openFileWindow() {
 }
 const showEditModal = ref(false);
 function handleChange() {
-  console.log(inputRef.value!.files!.length);
-  const file = inputRef.value!.files![0];
-  showEditModal.value = true;
-  const reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onload = (e) => {
-    option.img = e.target!.result as string; // base64
-  };
-  // const URL = window.URL || window.webkitURL;
-  // option.img = URL.createObjectURL(file);
+  if (inputRef.value && inputRef.value.files?.length !== 0) {
+    const file = inputRef.value!.files![0];
+    showEditModal.value = true;
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (e) => {
+      option.img = e.target!.result as string; // base64
+    };
+    // const URL = window.URL || window.webkitURL;
+    // option.img = URL.createObjectURL(file);
+  }
 }
 
 const previews: any = ref({});
