@@ -1,85 +1,102 @@
 <template>
-  <n-popover
-    trigger="click"
-    width="330"
-    placement="bottom-end"
-  >
-    <!--    铃铛-->
-    <template #trigger>
-      <n-tooltip
-        placement="bottom"
-        trigger="hover"
-      >
-        <template #trigger>
-          <HoverContainer style="padding:0 2px;width: 40px">
-            <n-badge
-              :value="10"
-              :max="15"
-              :offset="[4,0]"
-            >
-              <svg-icon
-                name="消息"
-                size="21"
-                :color="iconColor"
-              />
-            </n-badge>
-          </HoverContainer>
-        </template>
-        <span>消息通知</span>
-      </n-tooltip>
-    </template>
-
-    <!--    消息tab展示-->
-    <n-tabs
-      type="line"
-      justify-content="space-around"
-      size="small"
-      animated
+  <div class="my-container">
+    <n-popover
+      placement="bottom-end"
+      to=".my-container"
+      trigger="click"
+      width="330"
     >
-      <n-tab-pane
-        name="通知"
-        tab="通知"
+      <!--    铃铛-->
+      <template #trigger>
+        <bell />
+      </template>
+
+      <!--    消息tab展示-->
+      <n-tabs
+        animated
+        justify-content="space-around"
+        size="small"
+        type="line"
       >
-        <div style="width:100%;background-color: #9C0502;height:30px" />
-      </n-tab-pane>
-      <n-tab-pane
-        name="回复"
-        tab="回复"
-      >
-        Hey Jude
-      </n-tab-pane>
-      <n-tab-pane
-        name="私信"
-        tab="私信"
-      >
-        <div
-          ref="scroller"
-          class="scroller"
-          :class="scrollbarThumbColor"
+        <n-tab-pane
+          name="通知"
+          style="height:200px"
+          tab="通知"
         >
-          <div v-for="item in 12">
-            {{ item }}
+          <template #tab>
+            <span>通知</span>
+            <!--          <n-badge-->
+            <!--            type="warning"-->
+            <!--            :value="0"-->
+            <!--            :max="15"-->
+            <!--          />-->
+          </template>
+          <div style="width:100%;background-color: #9C0502;height:30px" />
+        </n-tab-pane>
+        <n-tab-pane
+          name="回复"
+          style="height:200px"
+          tab="回复"
+        >
+          <template #tab>
+            <span>回复</span>
+            <!--          <n-badge-->
+            <!--            :value="0"-->
+            <!--            :max="15"-->
+            <!--          />-->
+          </template>
+          Hey Jude
+        </n-tab-pane>
+        <n-tab-pane
+          name="私信"
+          tab="私信"
+        >
+          <template #tab>
+            <span>私信</span>
+            <!--          <n-badge-->
+            <!--            type="info"-->
+            <!--            :value="3"-->
+            <!--            :max="15"-->
+            <!--          />-->
+          </template>
+          <div
+            ref="scroller"
+            class="scroller"
+          >
+            <div v-for="item in 12">
+              {{ item }}
+            </div>
           </div>
-        </div>
-      </n-tab-pane>
-    </n-tabs>
-    <template #footer>
-      <n-space
-        justify="space-around"
-      >
-        <div>fsdf</div>
-        <div>fsdf</div>
-        <div>fsdf</div>
-      </n-space>
-    </template>
-  </n-popover>
+        </n-tab-pane>
+      </n-tabs>
+      <template #footer>
+        <n-space
+          justify="space-around"
+        >
+          <n-button
+            quaternary
+            size="small"
+            type="warning"
+          >
+            全部标记已读
+          </n-button>
+          <n-button
+            quaternary
+            size="small"
+            type="info"
+          >
+            查看更多
+          </n-button>
+        </n-space>
+      </template>
+    </n-popover>
+  </div>
 </template>
 <script lang="ts" setup>
-import HoverContainer from '@/components/HoverContainer/HoverContainer.vue';
-import SvgIcon from '@/components/SvgIcon/index.vue';
 import { isDark } from '@/utils/switchMode';
 import { computed, ref } from 'vue';
 import { useInfiniteScroll } from '@vueuse/core';
+import Bell from './components/Bell.vue';
 
 const scroller = ref<HTMLElement>();
 useInfiniteScroll(
@@ -92,29 +109,31 @@ useInfiniteScroll(
 );
 
 const iconColor = computed(() => (isDark.value ? '#e6e6e6' : '#515151'));
-// const scrollbarThumbColor = computed(() => (
-// isDark.value ? 'rgba(195,195,195,0.27)' : 'rgba(0,0,0,0.2)'));
-const scrollbarThumbColor = computed(() => (isDark.value ? 'scroller-dark' : 'scroller-light'));
+const scrollbarThumbColor = computed(() => (
+  isDark.value ? 'rgba(195,195,195,0.27)' : 'rgba(0,0,0,0.2)'));
+// const scrollbarThumbColor = computed(() => (isDark.value ? 'scroller-dark' : 'scroller-light'));
 
 </script>
 <style scoped>
-.scroller{
+.my-container {
+  display: flex;
+}
+
+.scroller {
   max-height: 200px;
   overflow-y: scroll;
 }
-.scroller::-webkit-scrollbar{
+
+.scroller::-webkit-scrollbar {
   width: 0;
 }
-.scroller:hover::-webkit-scrollbar{
+
+.scroller:hover::-webkit-scrollbar {
   width: 5px;
 }
-.scroller::-webkit-scrollbar-thumb{
+
+.scroller::-webkit-scrollbar-thumb {
   border-radius: 10px;
-}
-.scroller-light::-webkit-scrollbar-thumb{
-  background-color: rgba(0,0,0,0.1)
-}
-.scroller-dark::-webkit-scrollbar-thumb{
-  background-color: rgba(195,195,195,0.27)
+  background-color: v-bind(scrollbarThumbColor)
 }
 </style>
