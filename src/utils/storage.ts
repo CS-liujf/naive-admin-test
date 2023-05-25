@@ -46,11 +46,16 @@ class MylocalStorage {
     localStorage.setItem(key, JSON.stringify(item));
   }
 
+  // 由于对Date对象stringify后再parse将会得到string类型，因此需要转化
+  private parseReviver(key: string, value:any) {
+    return key === 'expires' ? new Date(value) : value;
+  }
+
   getItem(key: string) {
     const temp = localStorage.getItem(key);
     if (temp === null) return null;
-    const res = JSON.parse(temp) as StorageItem;
-    if (res.expires && res.expires > new Date()) {
+    const res = JSON.parse(temp, this.parseReviver) as StorageItem;
+    if (res.expires && res.expires < new Date()) {
       this.removeItem(key);
       return null;
     }
